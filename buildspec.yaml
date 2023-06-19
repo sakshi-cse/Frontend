@@ -14,7 +14,7 @@ phases:
   post_build:
     commands:
       - echo "Copying files to S3..."
-      - aws s3 cp dist/ s3://bucket-19-06-2023 --delete
+      - aws s3 cp node_modules/ionicons/dist/ s3://bucket-19-06-2023 --delete
 artifacts:
   files:
     - '**/*'

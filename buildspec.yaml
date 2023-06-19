@@ -10,20 +10,21 @@ phases:
     commands:
       - echo Installing source NPM dependencies...
       - npm install 
-      - npm install mongodb
+     
    
   build:
     commands:
       - echo Build started on date
+      - sudo npm run build
     
   post_build:
      commands:
-      - aws s3 cp node_modules/ s3://${S3_BUCKET} --recursive
+      - aws s3 cp dist/ s3://${S3_BUCKET} --recursive
       - echo Build completed on date
 artifacts:
   files:
       - '**/*'
-  base-directory: 'node_modules*'
+  base-directory: 'dist*'
   discard-paths: yes
 
 

@@ -19,7 +19,7 @@ phases:
     
   post_build:
      commands:
-      - aws s3 cp www/ s3://${S3_BUCKET} --recursive
+      - aws s3 sync www/ s3://${S3_BUCKET} 
       - echo Build completed on date
 artifacts:
   files:

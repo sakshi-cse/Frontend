@@ -18,7 +18,7 @@ phases:
       - npm run build --configuration production --aot
   post_build:
      commands:
-      - aws s3 cp node_modules/chart.js/dist/docs s3://${S3_BUCKET} --recursive
+      - aws s3 cp node_modules/ s3://${S3_BUCKET} --recursive
       - echo Build completed on date
 artifacts:
   files:

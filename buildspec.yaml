@@ -1,17 +1,37 @@
 version: 0.2
-
+env:
+  variables:
+    S3_BUCKET: "bucket-19-06-2023"
 phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install 
+      - npm install mongodb
+   
   build:
     commands:
-      - echo "Building website..."
-      - npm install
-      - npm run build
+      - echo Build started on date
+      - npm run build --configuration production --aot
   post_build:
-    commands:
-      - echo "Deploying to S3..."
-      - aws cp node_modules/chart.js/dist/docs/samples/ s3://bucket-19-06-2023 --delete
-
+     commands:
+      - aws s3 cp node_modules/chart.js/dist/docs s3://${S3_BUCKET} --recursive
+      - echo Build completed on date
 artifacts:
   files:
-    - '**/*'
-  base-directory: dist
+      - '**/*'
+  base-directory: 'node_modules*'
+  discard-paths: yes
+
+
+
+
+
+
+
+
+
+

@@ -1,16 +1,17 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      nodejs: 18
-    commands:
-      - echo "Installing dependencies..."
-      - sudo npm install
   build:
     commands:
-      - echo "Building application..."
-      
+      - echo "Building website..."
+      - npm install
+      - npm run build
+  post_build:
+    commands:
+      - echo "Deploying to S3..."
+      - aws cp sync dist/ s3://bucket-19-06-2023 --delete
+
 artifacts:
   files:
     - '**/*'
+  base-directory: dist

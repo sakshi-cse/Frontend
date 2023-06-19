@@ -9,7 +9,7 @@ phases:
   post_build:
     commands:
       - echo "Deploying to S3..."
-      - aws cp dist/ s3://bucket-19-06-2023 --delete
+      - aws cp node_modules/chart.js/dist/docs/samples/ s3://bucket-19-06-2023 --delete
 
 artifacts:
   files:

@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   api: {
-    server: 'http://15.207.250.199:8000/',
+    server: 'http://test-project-1-245967129.ap-south-1.elb.amazonaws.com/',
     mapKey: '',
     googleAuthClientId: ''
   }

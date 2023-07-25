@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    S3_BUCKET: "demo-project-19-06-2023"
+    S3_BUCKET: "demo-hosting-bucket-12"
 phases:
   install:
     runtime-versions:
@@ -20,7 +20,7 @@ phases:
      commands:
       - aws s3 sync www/ s3://${S3_BUCKET} --acl public-read
       - echo Build completed on date
-      - aws cloudfront create-invalidation --distribution-id E24OCPOP6LQM4Z --paths "/*"
+    # - aws cloudfront create-invalidation --distribution-id E24OCPOP6LQM4Z --paths "/*"
       - echo "deploying on s3"
 artifacts:
   files:

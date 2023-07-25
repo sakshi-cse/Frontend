@@ -18,7 +18,7 @@ phases:
     
   post_build:
      commands:
-      - aws s3 sync www/ s3://${S3_BUCKET} --acl public-read
+      - aws s3 sync www/ s3://${S3_BUCKET} #--acl public-read
       - echo Build completed on date
     # - aws cloudfront create-invalidation --distribution-id E24OCPOP6LQM4Z --paths "/*"
       - echo "deploying on s3"

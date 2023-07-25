@@ -20,7 +20,7 @@ phases:
      commands:
       - aws s3 sync www/ s3://${S3_BUCKET} #--acl public-read
       - echo Build completed on date
-     - aws cloudfront create-invalidation --distribution-id E24OCPOP6LQM4Z --paths "/*"
+     - aws cloudfront create-invalidation --distribution-id E3JCAT8I70LOT7 --paths "/*"
       - echo "deploying on s3"
 artifacts:
   files:
